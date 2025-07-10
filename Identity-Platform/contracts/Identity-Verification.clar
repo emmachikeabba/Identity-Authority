@@ -279,6 +279,7 @@
       (credential-holder-principal tx-sender)
       (credential-lookup-key {credential-holder-principal: credential-holder-principal, credential-type-identifier: credential-type-identifier})
     )
+    (asserts! (validate-bounded-text credential-type-identifier u32) ERR-INVALID-INPUT-PARAMETERS)
     (asserts! (verify-identity-exists credential-holder-principal) ERR-IDENTITY-NOT-FOUND)
     (asserts! (is-some (map-get? verifiable-credentials credential-lookup-key)) ERR-CREDENTIAL-NOT-FOUND)
     
